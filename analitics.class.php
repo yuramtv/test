@@ -4,7 +4,7 @@ class Analitics {
 
     public $trend = Array();
 
-    protected static $_Exchange; // активная торговая биржа
+    protected static $_Exchange;
 
     protected static function Factory($class_name)
     {
