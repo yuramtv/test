@@ -1,0 +1,67 @@
+
+body {
+font: 12px Verdana,Serif,Arial;
+line-height: 18px;
+color: #383838;
+}
+
+h1{
+font-family: Georgia, serif;
+font-style:italic;
+font-size: 18px;
+color: navy;
+}
+#wrapper{
+	width:920px;
+	margin:0 auto;
+}
+
+#header {
+	height:100px;
+
+}
+
+#header .logo{
+float:left;
+
+width:400px;
+height:70px;
+}
+
+#header .menu{
+clear:both;
+float:right;
+
+width:50%;
+height:30px;
+
+}
+
+#content {	
+	width:100%;
+	float:left;
+	min-height: 440px;
+}
+
+
+#header .menu li{
+	float:left;
+	margin-right: 40px;
+	margin-top: -10px;
+	list-style:none;
+	text-transform:uppercase;
+	font-weight:bold;
+	text-align:center;
+	display:block;
+}
+
+
+
+#footer{
+	clear: both;
+	float:left;
+	height:60px;
+	width:100%;
+	text-align:right;
+}
+	
