@@ -12,9 +12,7 @@
          if(isset($_GET['page'])) {$page = (int)$_GET['page'];} else {$page = 1;}
          if($page <0 ){$page = 1;}
 
-         $Items = $model->getList($page);
-
-         $task =$Items['task'];
+         // управление сортировкой
 
          // инициализация кнопок сортировки
          $p_sort['name_asc'] = "inline";
@@ -26,7 +24,6 @@
          $p_sort['status_asc'] = "inline";
          $p_sort['status_desc'] = "none";
 
-         // управление сортировкой
          if(isset($_GET['sort'])) {
 
              $sArray = explode("_", trim($_GET['sort']));
@@ -37,41 +34,38 @@
              // защита от некорректных данных
              switch($field){
                  default:
-                     $n_action = false;
+                     $field = null;
                      break;
                  case"name":
                  case"email":
                  case"status":
-                     $n_action = true;
                      break;
              }
 
              switch($dir){
                  default:
-                     $s_action = false;
+                     $dir = null;
                      $revers = "";
                      break;
                  case"asc":
-                     $s_action = true;
                      $revers = "desc";
                      break;
                  case"desc":
-                     $s_action = true;
                      $revers = "asc";
                      break;
              }
 
-             //debug("field: ".$field."\ndir: ".$dir."\nN_action: ".$n_action."\nS_action: ".$s_action);
-
-             if($n_action and $s_action) {
-
-                 $task = $this->sort ($task,$field,$dir);
-
-                 $p_sort[$field.'_'.$dir] = "inline";
-                 $p_sort[$field.'_'.$revers] = "none";
+             if($dir != null and $field!=null) {
+                 $p_sort[$field . '_' . $dir] = "inline";
+                 $p_sort[$field . '_' . $revers] = "none";
              }
 
          }
+
+         $Items = $model->getList($page,$field,$dir);
+
+         $task =$Items['task'];
+
          // передаём значение во view
          $this->Items = $task;
          $this->p_button = $Items['p_button'];

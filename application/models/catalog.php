@@ -6,9 +6,14 @@
 
      private $page_limit = 3; //на сколько страниц пагинация
 
-	  public function getList($page = null)
+	  public function getList($page = null,$field = null, $dir = null)
 	  {
           $query = "SELECT * FROM ".$this->table_name;
+
+          if($field != null and $dir != null) {
+
+              $query = "SELECT * FROM ".$this->table_name. " ORDER BY ".$field." ".$dir;
+          }
 
           $out = $this->pagination($page);
 
