@@ -1,14 +1,12 @@
 <?php
-//класс меню, возвращает html код для меню. 
-//Экземпляр класса может быть вызван лишь один раз.
-//Реализован патерн Singleton
+
   class Lib_Menu
   {
 	public $MenuItem = array("Главная"=>"/", "Каталог"=>"/catalog", "Вход"=>"/enter");     
    
-	protected static $instance; //(экземпляр объекта) Защищаем от создания через new Singleton
+	protected static $instance;
 	private function __construct() {}	
-	public static function getInstance() {//Возвращает единственный экземпляр класса
+	public static function getInstance() {
 		if (!is_object(self::$instance)) self::$instance = new self;
 		return self::$instance;
     }

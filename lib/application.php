@@ -1,20 +1,13 @@
 <?php
- class Lib_Application //класс маршрутизатор, подбирает нужный контролер для обработки данных
+ class Lib_Application
  {
-    private function getRoute() //получить маршрут .htaccess формирует ссылку таким образом что в параметры гет запроса попадает требуемый маршрут
+    private function getRoute()
     {
-	   if (empty($_GET['route']))
-       {
-           $route = 'index';
-	   }
-         else
-	   {
-             $route = $_GET['route'];
-	   }
+	   if (empty($_GET['route'])) {$route = 'index'; } else {$route = $_GET['route'];}
 		return $route;
     }
 
-    private function getController()//получить контролер
+    private function getController()
 	{       
        $route=$this->getRoute();
 	   $path_contr = 'application/controllers/';
@@ -22,7 +15,7 @@
        return $controller;
     }
 	 
-	public function getView()//получить представление для контролера
+	public function getView()
 	{
        $route=$this->getRoute();
 	   $path_view = 'Application/views/' ;
@@ -30,21 +23,21 @@
        return $view;
     }
 	 
-	public function Run()// запуск процесса обработки данных
+	public function Run()
 	{ 
-	   session_start(); //открываем сессию
+	   session_start();
 
-	   $controller = $this->getController(); //получаем контролер
+	   $controller = $this->getController();
 
 	   $cl=explode('.', $controller);
+       $name_contr = str_replace("/", "_", $cl[0]);
 
-	   $cl=$cl[0]; //отбрасываем расширение, получаем только путь до контролера
-       $name_contr = str_replace("/", "_", $cl);//заменяем в пути слеши на подчеркивания, таким образом получая название класса
-	   $contr= new $name_contr;//создаем экземпляр класса контролера
-       $contr->index();//запускаем контролер на выполнение (index() должна быть у любого контролера)
-	   $member=$contr->member;//получаем переменные контролера
+	   $contr= new $name_contr;
+       $contr->index();
+
+	   $member=$contr->member;
+
 	   return $member;
-	
 	}
  }
 ?>
