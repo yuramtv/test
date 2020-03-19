@@ -11,6 +11,13 @@ font-style:italic;
 font-size: 18px;
 color: navy;
 }
+
+tr {
+    line-height: 45px;
+    min-height: 45px;
+    height: 45px;
+}
+
 #wrapper{
 	width:920px;
 	margin:0 auto;
