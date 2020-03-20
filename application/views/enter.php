@@ -1,7 +1,7 @@
 <?
-//представление личного кабинета (страница личного кабинета)
+
 if(!$unVisibleForm):?>
-<h1>Вход в личный кабинет</h1>
+    <h1>Вход в личный кабинет</h1>
 <?endif;?>
 
     <div class="col-sm-4 panel" >
@@ -17,21 +17,17 @@ if(!$unVisibleForm):?>
         ?>
 
         <form action="/enter" method="POST">
-
             <div class="form-group">
                 <label for="login">Логин</label>
                 <input type="text" class="form-control" name="login" value="<?=$login?>" required="required" />
             </div>
-
             <div class="form-group">
                 <label for="pass">Пароль</label>
                 <input type="password" class="form-control" name="pass" value="" required="required" /><br />
-
                 <input type="submit" class="btn btn-primary" value="Вход" />
-
         </form>
     </div>
 <? else: ?>
-<h1>Личный кабинет пользователя <?=$userName?></h1>
+        <h1>Личный кабинет пользователя <?=$userName?></h1>
 <a href="/enter?out=1">Выйти из кабинета</a>
 <?endif;?>

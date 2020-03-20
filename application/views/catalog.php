@@ -21,7 +21,7 @@
                       </tr>
                    </thead>
                    <tbody>
-   <?php
+<?php
         foreach ($Items as $item) {
 
                 echo "<tr>
@@ -41,7 +41,6 @@
 if(isset($_GET['sort'])) {
    $end_link = "&sort=".$_GET['sort'];}else{$end_link = "";}
 ?>
-
                 <nav aria-label="кнопки пагинации" style="display:<?= $p_button['visible'] ?>;" >
                     <ul class="pagination">
                         <li style="display:<?= $p_button[1]['visible'] ?>;"  ><a href="?page=<?= $p_button[1]['number'].$end_link ?>" ><<</a></li>
@@ -53,5 +52,4 @@ if(isset($_GET['sort'])) {
                         <li style="display:<?= $p_button[7]['visible'] ?>;" ><a href="?page=<?= $p_button[7]['number'].$end_link ?>" >>></a></li>
                     </ul>
                 </nav>
-
             </div>

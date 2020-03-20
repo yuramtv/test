@@ -14,7 +14,6 @@ function debug ($value){
             $main = $value;
             break;
     }
-
     echo "<pre>".$main."</pre>";
 }
 
@@ -28,17 +27,9 @@ function shortenText ($text) {
     $max = 100;
 
     if(strlen ($text) > $max) {
-
         $text = substr($text, 0, $max);
-
         $text = rtrim($text, "!,.-");
-
         $text = substr($text, 0, strrpos($text, ' '))."… ";
-
     }
-
     return $text;
 }
-
-
-?>

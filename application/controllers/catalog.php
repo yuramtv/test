@@ -73,8 +73,8 @@
 
      }
 
-    private function sort ($task,$field,$dir) {
-
+    private function sort ($task,$field,$dir)
+    {
          uasort($task, function ($a, $b) use  ($field, $dir) {
 
              switch($dir){
@@ -96,9 +96,5 @@
          });
 
         return $task;
-
      }
-
   }
-
-?>

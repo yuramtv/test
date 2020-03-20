@@ -1,6 +1,5 @@
 <?php
 
-
 class Application_Models_Task
 {
     /**
@@ -11,8 +10,6 @@ class Application_Models_Task
     public function getTask($id)
     {
         $query = "SELECT * FROM task WHERE id='$id'";
-
-        //echo $query;
 
         $TaskArray = DB()->query($query)->fetchAll( PDO::FETCH_ASSOC );
 
@@ -33,7 +30,7 @@ class Application_Models_Task
 
         DB()->prepare($query)->execute();
 
-        $rec_id = DB()->lastInsertId(); // id созданой записи
+        $rec_id = DB()->lastInsertId();
 
         return $rec_id;
     }
@@ -58,8 +55,6 @@ class Application_Models_Task
         }
 
         $query = "UPDATE `task` SET `name` ='$name',`email` ='$email',`sText`='$sText',`status` ='$status' $corrected WHERE `id` ='$id'";
-
-        //debug($query);
 
         $result = DB()->prepare($query)->execute();
 

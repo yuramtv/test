@@ -1,26 +1,20 @@
 <?php
 
-
 class Application_Controllers_Task extends Lib_BaseController
 {
     public function index()
     {
-
         $model = new Application_Models_Task;
 
-        if(isset($_GET['id'])) {
-
-            $task_id = $_GET['id'];
-        }
+        if(isset($_GET['id'])) { $task_id = $_GET['id']; }
 
         if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['sText']) ){
 
+            $user_name = addslashes(htmlspecialchars(trim($_POST['name'])));
 
-            $user_name = addslashes (htmlspecialchars(trim($_POST['name'])));
+            $email = addslashes(htmlspecialchars(trim($_POST['email'])));
 
-            $email = addslashes (htmlspecialchars(trim($_POST['email'])));
-
-            $sText = addslashes (htmlspecialchars(trim($_POST['sText'])));
+            $sText = addslashes(htmlspecialchars(trim($_POST['sText'])));
 
             if (isset($_POST['status']) ) { $status = 1;} else {$status = 0; }
 
@@ -32,7 +26,6 @@ class Application_Controllers_Task extends Lib_BaseController
 
                 if($_SESSION["Auth"]) {
 
-                    // проверяем, изменился ли тескст
                     $old_task_array = $model->getTask($task_id);
 
                     if($old_task_array['sText'] != $sText) {
@@ -54,6 +47,5 @@ class Application_Controllers_Task extends Lib_BaseController
         $task = $model->getTask($task_id);
         $this->task=$task;
         }
-
     }
 }

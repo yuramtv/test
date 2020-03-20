@@ -1,8 +1,7 @@
 <?php
-//модель авторизации
+
  class Application_Models_Auth
   {	  
-	//проверка данных авторизации
 	  public function ValidData($login,$pass)
 	  {
 		 
@@ -19,7 +18,6 @@
 			$msg="<em><span style='color:green'>Вы верно ввели данные!</span></em>";
 			$unVisibleForm=true;
 		}
-		
 		$result=array("unVisibleForm"=>$unVisibleForm,
 						"userName"=>$login,
 						"msg"=>$msg,
@@ -28,6 +26,3 @@
 		return $result;
 	  }
   } 
-
-?>  
-  

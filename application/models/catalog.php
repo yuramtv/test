@@ -1,5 +1,5 @@
 <?php
-//Модель вывода каталога
+
  class Application_Models_Catalog
   {
      private $table_name = "task"; // имя таблицы
@@ -21,15 +21,13 @@
 
           $TaskItems = DB()->query($query)->fetchAll( PDO::FETCH_ASSOC );
 
-          //debug($TaskItems);
-
           $out['task'] = $TaskItems;
 
           return $out;
 	  }
 
-     private function pagination($page){
-
+     private function pagination ($page)
+     {
          // Определяем общее число записей в базе данных
          $query = "SELECT COUNT(*) FROM ".$this->table_name;
          $posts = DB()->query($query)->fetchColumn();
@@ -77,8 +75,4 @@
 
          return $out;
      }
-
-  } 
-
-?>  
-  
+  }
